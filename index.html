@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotubeTube AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" /> <!-- Link to CSS File -->
+</head>
+
+<body class="bg-black text-white">
+    <!-- Navbar -->
+    <nav id="navbar" class="flex items-center justify-between p-4 bg-black fixed top-0 w-full z-50">
+        <div class="flex items-center">
+            <img src="Notelogo-Photoroom.png" alt="NoteTube Logo" class="h-10" width="40" height="40" />
+            <span class="ml-2 text-xl font-bold text-blue-500">NoteTube <span class="text-white">AI</span></span>
+        </div>
+        <ul class="flex space-x-4">
+            <li><a href="#home" class="hover:text-blue-500">Home</a></li>
+            <li><a href="#courses" class="hover:text-blue-500">Courses</a></li>
+            <li class="relative">
+                <a href="#" class="hover:text-blue-500" id="exploreBtn">Explore <i class="fas fa-caret-down"></i></a>
+                <ul id="dropdownMenu" class="dropdown absolute mt-2">
+                    <li><a href="#challenges">Challenges</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+            </li>
+            <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+            <li><a href="#articles" class="hover:text-blue-500">Articles</a></li>
+            <li><a href="#tutorials" class="hover:text-blue-500">Tutorials</a></li>
+        </ul>
+        <div id="dash_div" class="flex items-center space-x-2 hover:text-blue-500">
+            <span><a id="dash_name" href="login_signup.html">Login/SignUp</a></span>
+            <img id="dp" src="generic-user-icon-9.jpg" alt="User Avatar" class="h-10 rounded-full" width="40"
+                height="40" / hidden>
+        </div>
+    </nav>
+    <!-- Sidebar (Initially Hidden) -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
+    <aside id="sidebar"
+        class="w-64 bg-black text-black h-screen p-4 fixed right-0 top-0 transform translate-x-full transition-transform duration-300 z-50">
+        <button id="closeSidebar" class="p-2 text-black-500 hover:text-gray-800">✖</button>
+        <ul class="space-y-4 mt-4">
+            <li><a href="note.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Notes</a></li>
+            <li><a href="chat.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Chats</a></li>
+            <li><a href="#" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Chatbots</a></li>
+            <li><a href="#" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Summarize YT Videos</a></li>
+            <li><button id="openSettings"
+                    class="block w-full text-left p-2 bg-gray-200 rounded hover:bg-gray-300">Setting</button></li>
+        </ul>
+    </aside>
+    <!-- secondary side bar -->
+    <aside id="settingsSidebar"
+        class="w-64 bg-black text-black h-screen p-4 fixed right-0 top-0 transform translate-x-full transition-transform duration-300 z-50">
+        <button id="closeSettingsSidebar" class="p-2 hover:text-gray-800">✖</button>
+        <ul class="space-y-4 mt-4">
+            <li><button id="logoutBtn"
+                    class="block w-full text-left p-2 bg-red-500 text-white rounded hover:bg-red-600">Log Out</button>
+            </li>
+        </ul>
+    </aside>
+    <!-- Main Content -->
+    <div class="p-8 mt-16" id="home">
+        <!-- NoteTube RED Section -->
+        <div class="bg-red-900 p-8 rounded-lg mb-8" id="red-launch">
+            <div class="flex justify-between items-center">
+                <div>
+                    <span class="bg-red-600 text-white px-3 py-1 rounded-full">Stay Tuned</span>
+                    <h1 class="text-4xl font-bold mt-4">
+                        NoteTube AI <span class="text-red-600">RED</span> is Coming
+                    </h1>
+                    <p class="mt-2">
+                        Get ready for our most powerful learning experience yet, it's time to go RED
+                    </p>
+                    <button id="notifyBtn" class="mt-4 bg-red-600 text-white px-4 py-2 rounded-full">
+                        <i class="bell"></i> Notify Me
+                    </button>
+                </div>
+                <img src="logo-text.webp" alt="NoteTube RED Logo" class="h-24" width="100" height="100" />
+            </div>
+        </div>
+        <!-- Left Section -->
+        <div class="p-8 flex flex-col md:flex-row justify-between items-center">
+
+            <!-- Left Section -->
+            <div class="max-w-lg">
+                <h1 class="text-4xl font-bold">
+                    Solve the Scattered Notes Dilemma <span class="text-purple-400">NoteTube</span>
+                </h1>
+                <p class="mt-2 text-gray-400">
+                    Capture ideas instantly, organize notes effortlessly, and enhance productivity with our smart
+                    note-taking app.
+                </p>
+
+                <!-- Buttons -->
+                <div class="mt-4 flex space-x-4">
+                    <button class="px-6 py-2 bg-purple-500 rounded-full text-white hover:bg-purple-600 transition">
+                        More Info
+                    </button>
+                    <button
+                        class="px-6 py-2 border border-red-400 rounded-full text-red-400 hover:bg-red-600 hover:text-white transition">
+                        Want To Know <span class="text-red-500">● Live</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Section (Feature Buttons) -->
+            <div class="grid grid-cols-2 gap-4 mt-8 md:mt-0 md:w-2/3">
+                <button id="btn_youtube"
+                    class="px-6 py-3 bg-gray-900 rounded-lg text-white hover:bg-gray-700 transition">
+                    YouTube
+                </button>
+                <button id="btn_chats"
+                    class="px-6 py-3 bg-gray-900 rounded-lg text-white hover:bg-gray-700 transition">
+                    Chats
+                </button>
+                <button id="btn_chatbot"
+                    class="px-6 py-3 bg-gray-900 rounded-lg text-white hover:bg-gray-700 transition">
+                    ChatBot
+                </button>
+                <button id="btn_notes"
+                    class="px-6 py-3 bg-gray-900 rounded-lg text-white hover:bg-gray-700 transition">
+                    Notes
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container flex justify-center items-center min-h-screen">
+        <div class="glowing-box w-[90%] p-6 rounded-lg shadow-lg bg-white" id="tilt-box">
+            <h3 class="text-lg font-medium">About Our Notes App</h3>
+            <h1 class="text-3xl font-bold my-2">Smart Notes,<br> Smarter Productivity</h1>
+            <p class="text-gray-700 mb-4">
+                Experience the power of seamless note-taking with our AI-powered Notes App. Capture ideas
+                effortlessly,<br>
+                convert speech to text, and access your notes anytime, anywhere. Designed for students,
+                professionals,<br>
+                and anyone who values efficiency in note management.
+            </p>
+
+            <button class="connect-btn px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                Let's Connect
+            </button>
+        </div>
+    </div>
+
+
+    <script type="module" src="loginpage.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

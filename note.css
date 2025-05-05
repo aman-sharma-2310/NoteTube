@@ -1,0 +1,335 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #080808;
+    color: #f0f0f0;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    height: 100vh;
+    max-width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 300px;
+    background: linear-gradient(145deg, #151525, #1a1a30);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    background: rgba(26, 26, 48, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.sidebar-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #4f8fff 0%, #9c63ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.new-note-btn {
+    background: linear-gradient(45deg, #4f8fff, #9c63ff);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(156, 99, 255, 0.3);
+    width: 100%;
+}
+
+.new-note-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(156, 99, 255, 0.4);
+}
+
+.notes-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.note-item {
+    background: rgba(8, 8, 8, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.note-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(156, 99, 255, 0.2);
+    border-color: rgba(156, 99, 255, 0.2);
+}
+
+.note-item.active {
+    background: rgba(156, 99, 255, 0.1);
+    border-color: rgba(156, 99, 255, 0.3);
+}
+
+.note-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-preview {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.note-date {
+    font-size: 0.8rem;
+    color: #707070;
+    margin-top: 0.5rem;
+}
+
+/* Note Editor Styling */
+.note-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0f15;
+}
+
+.editor-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(15, 15, 21, 0.95);
+}
+
+.title-input {
+    background: transparent;
+    border: none;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 70%;
+    padding: 0.5rem;
+    outline: none;
+}
+
+.title-input::placeholder {
+    color: #707070;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.save-btn, .delete-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.save-btn {
+    background: linear-gradient(45deg, #651fff 0%, #7c4dff 100%);
+    color: white;
+    box-shadow: 0 4px 10px rgba(124, 77, 255, 0.3);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(124, 77, 255, 0.4);
+}
+
+.delete-btn {
+    background: rgba(229, 57, 53, 0.1);
+    border: 1px solid #e53935;
+    color: #e53935;
+}
+
+.delete-btn:hover {
+    background: rgba(229, 57, 53, 0.2);
+    transform: translateY(-2px);
+}
+
+.editor-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+#note-content {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+    padding: 0.5rem;
+}
+
+#note-content::placeholder {
+    color: #707070;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(8, 8, 8, 0.9);
+    border-left: 4px solid #9c63ff;
+    color: #f0f0f0;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateY(0);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+    
+    .note-editor {
+        height: 60vh;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(8, 8, 8, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(156, 99, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 99, 255, 0.5);
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #707070;
+    text-align: center;
+    padding: 2rem;
+}
+
+.empty-state p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #151525;
+    padding: 20px;
+    margin: 10% auto;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.close {
+    color: #cd1919;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#shareNoteBtn {
+    margin-top: 6px;
+    background-color: #c648c6;
+    color: white;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#shareNoteBtn:hover {
+    background-color: #a03aa0;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+#shareNoteBtn:active {
+    transform: scale(0.96);
+}

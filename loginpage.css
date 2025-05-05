@@ -1,0 +1,363 @@
+:root {
+    --main-bg: #1b1b1f;
+    --gradient-bg: linear-gradient(to bottom right, #1b1b1f 30%, #252540 100%);
+    --container-bg: linear-gradient(135deg, #3a1e5e, #25252b);
+    --border-gradient: linear-gradient(45deg, #5e1e1e, #7928ca, #21e4e8);
+    --input-bg: rgba(37, 37, 43, 0.8);
+    --highlight: #21e4e8;
+    --danger: #ff6b6b;
+    --text-light: #edecec;
+    --font-main: 'Arial', sans-serif;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+    transition: all 0.3s ease;
+}
+
+/* Background */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--gradient-bg);
+    overflow: hidden;
+}
+
+/* Auth Container */
+.auth-container {
+    background: var(--container-bg);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(121, 40, 202, 0.2);
+    width: 450px;
+    position: relative;
+    animation: fadeIn 0.5s ease;
+    filter: drop-shadow(0 15px 50px #000);
+    text-align: center;
+}
+
+/* Border Glow */
+.auth-border {
+    background: #25252b;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.4));
+}
+
+.auth-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--border-gradient);
+    border-radius: 14px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Headings */
+h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #5e1e1e, #7928ca);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 15px;
+    background-color: var(--input-bg);
+    color: #fff;
+    outline: none;
+}
+
+input:focus {
+    border-color: rgba(33, 228, 232, 0.6);
+    box-shadow: 0 0 15px rgba(33, 228, 232, 0.2);
+}
+
+/* Icon Inside Input */
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container input {
+    padding: 10px 40px 10px 35px;
+    border-radius: 20px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    color: #888;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+
+#togglePassword:hover {
+    color: var(--highlight);
+    transform: scale(1.2);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, var(--highlight), rgb(100, 180, 250));
+    color: rgb(33, 1, 1);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(33, 228, 232, 0.3);
+    position: relative;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    background: linear-gradient(to right, rgb(20, 200, 200), rgb(75, 150, 220));
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(33, 228, 232, 0.5);
+}
+
+/* Toggle Text Links */
+.toggle-text {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #a0a0a0;
+    display: grid;
+    gap: 12px;
+}
+
+.toggle-text span {
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle-text span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(to right, #5e1e1e, #7928ca);
+    transition: width 0.3s ease;
+}
+
+.toggle-text span:hover::after {
+    width: 100%;
+}
+
+#forgot {
+    color: #c0c0c0;
+}
+
+#forgot:hover {
+    color: var(--highlight);
+}
+
+#toogle {
+    color: #a52a2a;
+    font-weight: bold;
+}
+
+#toogle:hover {
+    color: #ff3030;
+}
+
+/* Error Message */
+#error-message {
+    color: var(--danger);
+    margin: 10px 0;
+    font-size: 14px;
+    height: 20px;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #25252b, #302b40);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transform: translateX(150%);
+    animation: slideIn 0.5s forwards, fadeOut 0.5s 3.5s forwards;
+    border-left: 4px solid var(--highlight);
+}
+
+.toast.success { border-left-color: #4CAF50; }
+.toast.error { border-left-color: #f44336; }
+
+.toast-icon { margin-right: 10px; font-size: 20px; }
+.toast-message { font-size: 14px; }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowing {
+    0% { box-shadow: 0 0 20px rgba(33, 228, 232, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(121, 40, 202, 0.5); }
+    100% { box-shadow: 0 0 20px rgba(33, 228, 232, 0.3); }
+}
+
+@keyframes slideIn { to { transform: translateX(0); } }
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--main-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #5e1e1e, #7928ca);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #7928ca, var(--highlight));
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .auth-container {
+        width: 90%;
+        max-width: 320px;
+        padding: 20px;
+    }
+
+    .auth-border {
+        padding: 20px 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    input, button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .toggle-text {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .toast {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+    }
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Input field with spacing for both icons */
+.input-container input {
+    width: 100%;
+    padding: 10px 40px 10px 35px; /* left space for lock, right for eye */
+    border-radius: 20px;
+    background-color: var(--input-bg);
+    color: #fff;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+    outline: none;
+}
+
+/* Lock icon on the left */
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.password-container button,
+#togglePassword,
+#toggleConfirmPassword {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 24px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: none; /* Disable animation */
+}
+
+.password-container button:hover,
+#togglePassword:hover,
+#toggleConfirmPassword:hover {
+    color: #888; /* No hover effect */
+    transform: translateY(-50%); /* Keep it fixed */
+}

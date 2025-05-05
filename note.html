@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="note.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="display flex">
+                    <button id="dash_div" class="p-2 mb-8 text-2xl z-50 relative">☰</button>
+                    <h1>My Notes</h1>
+                </div>
+                <button id="new-note-btn" class="new-note-btn">New Note</button>
+            </div>
+            <input type="text" id="search-input" placeholder="Search notes..."
+                class="p-2 w-full rounded mb-2 border border-gray-300 text-purple-700">
+            <div id="notes-list" class="notes-list">
+                <!-- Notes will be dynamically added here -->
+            </div>
+        </div>
+
+        <div class="note-editor">
+            <div class="editor-header">
+                <input type="text" id="note-title" placeholder="Note Title" class="title-input">
+                <div class="editor-actions">
+                    <button id="save-btn" class="save-btn">Save</button>
+                    <button id="delete-btn" class="delete-btn">Delete</button>
+                </div>
+            </div>
+            <div class="editor-body">
+                <textarea id="note-content" placeholder="Write your note here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <span id="toast-message">Note saved!</span>
+    </div>
+    <!-- Sidebar (Initially Hidden) -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
+    <aside id="sidebar"
+        class="w-64 bg-gray-300 text-purple-700 shadow-md h-screen p-4 fixed left-0 top-0 transform -translate-x-full transition-transform duration-300 z-50"
+        style="background-color: #1a1a30;">
+        <button id="closeSidebar" class="p-2 text-gray-500 hover:text-gray-800">✖</button>
+        <ul class="space-y-4 mt-4">
+            <li><a href="index.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Home</a></li>
+            <li><a href="note.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Notes</a></li>
+            <li><a href="chat.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Chats</a></li>
+            <li><a href="#" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Chatbots</a></li>
+            <li><a href="#" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Summarize YT Videos</a></li>
+        </ul>
+    </aside>
+    <!-- Share Note Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <b>
+                <h2>Share Note</h2>
+            </b>
+            <label for="friendSelect">Choose Friend:</label>
+            <select id="friendSelect" class="text-purple-700">
+                <!-- Friends will be populated dynamically -->
+            </select>
+            <button id="shareNoteBtn">Share Note</button>
+        </div>
+    </div>
+    <script type="module" src="loginpage.js"></script>
+    <script type="module" src="note_app.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const toggleSidebarButton = document.getElementById('dash_div');
+        const closeSidebarButton = document.getElementById('closeSidebar');
+
+        toggleSidebarButton.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+        });
+
+        closeSidebarButton.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+
+        // Click outside sidebar to close
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>

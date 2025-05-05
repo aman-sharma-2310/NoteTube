@@ -1,0 +1,81 @@
+/* Navbar Scroll Effect */
+.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown li {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* Glowing Box with Tilt Effect */
+.glowing-box {
+    background: linear-gradient(145deg, #0f0f0f, #161616); /* Default */
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    position: relative;
+    transition: transform 0.1s ease, box-shadow 0.3s ease-in-out, background 0.2s ease-in-out;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    margin-left: 9%;
+}
+
+/* Hover effect - glow increases */
+.glowing-box:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+.scroll-container {
+    overflow-y: scroll;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.scroll-content {
+    line-height: 1.6;
+}
+
+/* Custom scrollbar styling */
+.scroll-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+#dash_name, #dp{
+    cursor: pointer;
+}
+#dash_name:hover,
+#dp:hover {
+    color: lightblue; /* example style */
+    cursor: pointer;
+}
+

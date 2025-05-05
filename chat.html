@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="chat.css">
+</head>
+
+<body class="flex flex-col h-screen bg-gray-100">
+
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center bg-white shadow-md">
+
+        <div id="dash_div" class="flex items-center space-x-2 hover:text-blue-500">
+            <img src="generic-user-icon-9.jpg" alt="Profile Picture" class="w-10 h-10 rounded-full ">
+            <span><a id="dash_name" href="login_signup.html">Login/SignUp</a></span>
+        </div>
+
+    </header>
+    <hr>
+    <div class="flex">
+        <!-- Sidebar (Scrollable) -->
+        <aside class="w-64 bg-white shadow-md p-2 sticky top-0 flex-col">
+            <div class="text-2xl font-semibold border border-gray-800 rounded-md p-2 bg-white">Chats</div>
+            <div class="flex">
+                <!-- Requests section -->
+                <span id="popupTrigger"
+                    class="font-semibold mb-4 trigger-span text-blue-600 cursor-pointer">Requests</span>
+
+                <div id="popupOverlay" class="popup-overlay"></div>
+
+                <div id="popup" class="popup bg-white rounded-lg shadow-xl">
+                    <span id="popupClose"
+                        class="popup-close absolute top-3 right-3 text-2xl text-gray-500 cursor-pointer">&times;</span>
+
+                    <h2 class="text-xl font-bold mb-4">Requests</h2>
+
+                    <div id="requestsList" class="mb-4">
+                        <p id="noRequestsMessage">No Requests</p>
+                    </div>
+                </div>
+                <!-- Requests section -->
+                <!-- Add friends section -->
+                <div class="container mx-auto">
+                    <span id="add-friends-popup" class="font-semibold mb-4 trigger-span cursor-pointer text-blue-600"
+                        style="margin-left: 10px;">Add Friends</span>
+
+                    <div id="popup-overlay" class="popup-overlay"></div>
+
+                    <div id="in_popup" class="popup bg-white rounded-lg shadow-xl">
+                        <span id="popupAddClose"
+                            class="popup-close absolute top-3 right-3 text-2xl text-gray-500 cursor-pointer">&times;</span>
+
+                        <h2 class="text-xl font-bold mb-4">Add Friends</h2>
+
+                        <input type="text" id="searchUser" placeholder="Search Friends..."
+                            class="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <div id="availableUser" class="mb-4">
+                            <p id="noUser">No User Found</p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Add friends section -->
+            </div>
+            <!-- Search Bar -->
+            <input type="text" id="searchContacts" placeholder="Search..."
+                class="w-full p-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <!-- Contact List (Scrollable) -->
+            <ul id="contactList" class="space-y-3 overflow-y-auto flex-1 pr-2" style="max-height: 80vh;">
+                <div class="scroll-container">
+                    <div class="scroll-content" id="scrollContent">
+                        <!-- Content will be dynamically added here -->
+
+                        <div id="chatList" class="p-4 space-y-2"></div>
+                    </div>
+                </div>
+            </ul>
+        </aside>
+
+        <!-- Sidebar (Initially Hidden) -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
+        <aside id="sidebar"
+            class="w-64 bg-white shadow-md h-screen p-4 fixed left-0 top-0 transform -translate-x-full transition-transform duration-300 z-50">
+            <button id="closeSidebar" class="p-2 text-gray-500 hover:text-gray-800">✖</button>
+            <ul class="space-y-4 mt-4">
+                <li><a href="index.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Home</a></li>
+                <li><a href="note.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Notes</a></li>
+                <li><a href="chat.html" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Chats</a></li>
+                <li><a href="#" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Chatbots</a></li>
+                <li><a href="#" class="block p-2 bg-gray-200 rounded hover:bg-gray-300">Summarize YT Videos</a></li>
+            </ul>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col h-[calc(100vh-64px)] p-4 overflow-hidden">
+            <div id="chatWindow" class="bg-white rounded-lg shadow-md p-4 flex-1 overflow-y-auto">
+                <p class="text-gray-500 text-center mt-10">Select a chat to start messaging</p>
+            </div>
+        </main>
+
+
+
+        <script>
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const toggleSidebarButton = document.getElementById('dash_div');
+            const closeSidebarButton = document.getElementById('closeSidebar');
+
+            toggleSidebarButton.addEventListener('click', () => {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+            });
+
+            closeSidebarButton.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            });
+
+            // Click outside sidebar to close
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            });
+        </script>
+
+        <script type="module" src="loginpage.js"></script>
+        <script type="module" src="chat.js"></script>
+
+</body>
+
+</html>
