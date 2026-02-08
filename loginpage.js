@@ -28,14 +28,17 @@ import {
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBrBuYJYzdkVNTxVrOul-O1m5V_oLQxotw",
-    authDomain: "my-shop-3f13c.firebaseapp.com",
-    databaseURL: "https://my-shop-3f13c-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "my-shop-3f13c",
-    storageBucket: "my-shop-3f13c.firebasestorage.app",
-    messagingSenderId: "291411857178",
-    appId: "1:291411857178:web:33242ecb444506cbd6e6a3"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
 };
+
+// 🔥 Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
